@@ -20,7 +20,15 @@ def __init__():
 
 #__init__()
 
-
+while True:
+    input = input("Möchten Sie einen weiteren Namen eingeben?")
+    if input.lower() == "ja":
+        #Neuen namen getten etc
+        print("Neuer Name wird gespeichert")
+    elif input.lower() == "nein":
+        break
+    else:
+        continue
 
 print("Das Programm wird beendet!")
 f = open('varo.yml', 'w')
