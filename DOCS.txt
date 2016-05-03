@@ -1,0 +1,22 @@
+#########################################
+#                                       #
+#           Konrad DOCS                 #
+#                                       #
+#########################################
+
+# For loop
+
+friends = ["Nelly", "Luca", "Lucas", "Joscha"]
+
+for name in friends:
+    print(name)
+
+
+# Check if Integer is even
+
+integer = 21;
+
+if integer%2 == 0:
+    print("Integer is even")
+else:
+    print("Integer is uneven")

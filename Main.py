@@ -1,36 +1,50 @@
+#################################################
+#                                               #
+#           made by Konrad Brandts              #
+#                                               #
+#               Version 1.0                     #
+#                                               #
+#################################################
+
 import os
 
 def __getUID__(name):
     import urllib.request
     request = urllib.request.urlopen('https://api.mojang.com/users/profiles/minecraft/' + name)
     content = request.read()
-
+    request.close()
     string = content.decode("utf-8")
 
     return string[7:39]
 
-def __userInput__():
+def __writeVaroFile__():
+    name = None
     name = input("Namen eingeben:\n")
     uid = __getUID__(name)
-    return uid
+    f = open('varo.yml', 'a')
+    f.write("\n  " + uid + ":")
+    f.write("\n    Name: " + name)
+    f.write("\n    Team:")
+    f.write("\n    Time: 7200")
+    f.write("\n    Location: #BENÖTIGE INFOS VON LUCA")
+    f.close()
+    print("Wurde erfolgreich gespeichert!")
+
 
 def __init__():
     print("Das Programm wird gestartet....")
-    __userInput__()
+    __writeVaroFile__()
 
-#__init__()
+__init__()
 
 while True:
-    input = input("Möchten Sie einen weiteren Namen eingeben?")
-    if input.lower() == "ja":
-        #Neuen namen getten etc
-        print("Neuer Name wird gespeichert")
-    elif input.lower() == "nein":
+    inputText = None
+    inputText = input("Möchten Sie einen weiteren Namen eingeben?" + os.linesep)
+    if inputText.lower() == "ja":
+        __writeVaroFile__()
+    elif inputText.lower() == "nein":
         break
     else:
         continue
 
 print("Das Programm wird beendet!")
-f = open('varo.yml', 'w')
-f.write("")
-f.close()
